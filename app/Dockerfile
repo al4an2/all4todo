@@ -1,5 +1,5 @@
 # official Python Image
-FROM 3.11-slim
+FROM python:3.11-slim
 
 # Make work directory in container
 WORKDIR /app
@@ -8,7 +8,14 @@ WORKDIR /app
 COPY . /app
 
 # Install requirements
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Choose env
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=development
+
+# Open port
+EXPOSE 5000
 
 # Run application
-CMD ["python", "app.py"]
+CMD ["python", "./app/app.py"]
