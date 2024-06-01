@@ -21,3 +21,5 @@ instance/
 # Environments
 .env
 .venv
+.DS_Store
+app/.DS_Store
